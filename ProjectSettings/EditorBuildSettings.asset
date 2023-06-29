@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/AlterunaFPS/Scenes/Menu.unity
+    guid: 526747f12f76a244684fbd832912e91b
+  - enabled: 1
+    path: Assets/AlterunaFPS/Scenes/Offline.unity
+    guid: 96cc2e8b381c93d469710453434839ad
+  - enabled: 1
+    path: Assets/AlterunaFPS/Scenes/Multiplayer.unity
+    guid: d467bb58a331a364da0289e764f6c986
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

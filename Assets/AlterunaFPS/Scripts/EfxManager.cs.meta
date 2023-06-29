@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 62f28ff02364412f937420127d3a1769
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - FleshImpactPrefab: {fileID: 5773802275824907572, guid: dc82d5876e62a3749ae1dfd7aa4bd5c6, type: 3}
+  - MetalImpactPrefab: {fileID: 7550867248454680558, guid: a817a8e6b1420a94d951fc8b12aab85e, type: 3}
+  - SandImpactPrefab: {fileID: 1598995400320556737, guid: 1672db1c4021c9b4490476bc9bcc1595, type: 3}
+  - StoneImpactPrefab: {fileID: 1053356080687350649, guid: b24264fafd22eff48b5a63a67f4ca3b8, type: 3}
+  - WoodImpactPrefab: {fileID: 2743934482128375233, guid: c9c3b1f8269e9e64c90e17505dd17369, type: 3}
+  - BulletEFPrefab: {fileID: 5416920202388465431, guid: 595be7b1c4ef36244a793836f4bf06a5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
