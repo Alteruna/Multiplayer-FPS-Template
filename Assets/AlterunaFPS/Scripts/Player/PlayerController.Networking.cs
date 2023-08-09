@@ -27,13 +27,13 @@ namespace AlterunaFPS
 			}
 			else
 			{
-				_isOwner = Avatar.IsMe;
+				_isOwner = Avatar.IsOwner;
 				_possesed = Avatar.IsPossessed;
 				
 				Avatar.OnPossessed.AddListener(_ =>
 				{
 					_lastSpawnIndex = Avatar.Possessor.Index;
-					_isOwner = Avatar.IsMe;
+					_isOwner = Avatar.IsOwner;
 					_possesed = true;
 					OnPossession();
 				});

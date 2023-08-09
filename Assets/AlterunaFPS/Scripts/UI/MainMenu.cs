@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace AlterunaFPS
 {
@@ -12,6 +13,12 @@ namespace AlterunaFPS
 		public void Quit()
 		{
 			Application.Quit();
+		}
+
+		private void Awake()
+		{
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
 		}
 	}
 }

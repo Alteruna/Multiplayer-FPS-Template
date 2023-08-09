@@ -40,11 +40,10 @@ namespace AlterunaFPS
 		
 		private void Inputs()
 		{
+			// Toggle menu
 			if (Input.GetKeyDown(KeyCode.Escape))
 			{
-				Cursor.visible = true;
-				Cursor.lockState = CursorLockMode.None;
-				SceneManager.LoadScene(0);
+				MenuInstance.Instance.SetActive(!MenuInstance.Instance.activeSelf);
 			}
 		}
 		

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace AlterunaFPS
@@ -24,13 +25,13 @@ namespace AlterunaFPS
 		private Transform _bulletPool;
 
 		// Particles
-		private readonly List<ParticleSystem> _fleshImpactParticles = new();
-		private readonly List<ParticleSystem> _metalImpactParticles = new();
-		private readonly List<ParticleSystem> _sandImpactParticles = new();
-		private readonly List<ParticleSystem> _stoneImpactParticles = new();
-		private readonly List<ParticleSystem> _woodImpactParticles = new();
+		private readonly List<EfxPoolObject> _fleshImpactParticles = new();
+		private readonly List<EfxPoolObject> _metalImpactParticles = new();
+		private readonly List<EfxPoolObject> _sandImpactParticles = new();
+		private readonly List<EfxPoolObject> _stoneImpactParticles = new();
+		private readonly List<EfxPoolObject> _woodImpactParticles = new();
 		
-		private readonly List<ParticleSystem> _bulletParticles = new();
+		private readonly List<EfxPoolObject> _bulletParticles = new();
 
 		// Impact types
 		public enum ImpactType
@@ -79,46 +80,85 @@ namespace AlterunaFPS
 		}
 		
 		// Play impact using pooled particles
-		private void PlayImpact(List<ParticleSystem> particles, Transform owner, GameObject prefab, Vector3 pos, Vector3 normal)
+		private void PlayImpact(List<EfxPoolObject> particles, Transform owner, GameObject prefab, Vector3 pos, Vector3 normal)
 		{
 			// try get free particle
-			ParticleSystem ps = particles.FirstOrDefault(foo => !foo.isPlaying);
-
+			EfxPoolObject efx = particles.FirstOrDefault(foo => !foo.IsPlaying);
+			
+			
 			// if no free particles, create new one
-			if (ps == null)
+			if (efx == null)
 			{
-				ps = Instantiate(prefab).GetComponent<ParticleSystem>();
-				particles.Add(ps);
+				efx = new EfxPoolObject();
+				efx.Obj = Instantiate(prefab);
+				efx.HaveParticle = efx.Obj.TryGetComponent(out efx.Particle);
+				
+				particles.Add(efx);
 			}
 
 			// set position and rotation of particle before playing
-			Transform t = ps.transform;
-			t.SetParent(owner);
-			t.position = pos;
-			t.rotation = Quaternion.LookRotation(normal);
-			ps.Emit(1);
+			efx.SetPosRot(owner, pos, normal);
+			efx.Emit(1);
 		}
 		
 		// Play bullet effect
 		public void PlayBullet(Vector3 pos, Vector3 dir, float lifeTime)
 		{
 			// try get free particle
-			ParticleSystem ps = _bulletParticles.FirstOrDefault(foo => !foo.isPlaying);
+			EfxPoolObject efx = _bulletParticles.FirstOrDefault(foo => !foo.IsPlaying);
 
 			// if no free particles, create new one
-			if (ps == null)
+			if (efx == null)
 			{
-				ps = Instantiate(BulletEFPrefab, _bulletPool).GetComponent<ParticleSystem>();
-				_bulletParticles.Add(ps);
+				efx = new EfxPoolObject();
+				efx.Obj = Instantiate(BulletEFPrefab);
+				efx.HaveParticle = efx.Obj.TryGetComponent(out efx.Particle);
+				
+				_bulletParticles.Add(efx);
 			}
 
 			// set position and rotation of particle before playing
-			Transform t = ps.transform;
-			t.position = pos;
-			t.rotation = Quaternion.LookRotation(dir);
-			var main = ps.main;
-			main.startLifetimeMultiplier = lifeTime;
-			ps.Emit(1);
+			efx.SetPosRot(pos, dir);
+			efx.StartLifetimeMultiplier(lifeTime);
+			efx.Emit(1);
+		}
+		
+		// support both particle systems bse effects and self managed objects
+		private class EfxPoolObject
+		{
+			public GameObject Obj;
+			public ParticleSystem Particle;
+			public bool HaveParticle;
+			public bool IsPlaying => Obj.activeSelf || HaveParticle && Particle.isPlaying;
+
+			public void SetPosRot(Transform parent, Vector3 pos, Vector3 dir)
+			{
+				Transform t = Obj.transform;
+				t.SetParent(parent);
+				t.position = pos;
+				t.rotation = Quaternion.LookRotation(dir);
+			}
+			
+			public void SetPosRot(Vector3 pos, Vector3 dir)
+			{
+				Transform t = Obj.transform;
+				t.position = pos;
+				t.rotation = Quaternion.LookRotation(dir);
+			}
+			
+			public void Emit(int count = 1)
+			{
+				Obj.SetActive(true);
+				if (HaveParticle)
+					Particle.Emit(count);
+			}
+
+			public void StartLifetimeMultiplier(float lifeTime)
+			{
+				if (!HaveParticle) return;
+				var main = Particle.main;
+				main.startLifetimeMultiplier = lifeTime;
+			}
 		}
 	}
 }

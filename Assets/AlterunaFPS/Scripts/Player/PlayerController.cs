@@ -58,8 +58,9 @@ namespace AlterunaFPS
 
 		private void LateUpdate()
 		{
-			GunAction();
-			CameraRotation();
+			bool lockInput = LockCameraPosition || MenuInstance.Instance.activeSelf;
+			CameraRotation(lockInput);
+			GunAction(lockInput);
 
 			Sync();
 		}

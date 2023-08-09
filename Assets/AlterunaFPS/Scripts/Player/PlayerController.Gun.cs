@@ -16,6 +16,10 @@ namespace AlterunaFPS
 		public float GunFireTime = 0.2f;
 		public float GunReloadTime = 2.35f;
 		public float DistanceFromBody = 0.3f;
+		[Header("Aiming")]
+		public float ZoomFov = 30f;
+		public float ZoomInTime = 0.2f;
+		public float ZoomOutTime = 0.18f;
 		
 		private float _gunFireCooldown;
 		private float _gunReloadCooldown;
@@ -40,8 +44,17 @@ namespace AlterunaFPS
 			_gunMagazine = GunMagazineSize;
 		}
 
-		private void GunAction()
+		private void GunAction(bool lockInput = false)
 		{
+			if (Input.GetKey(KeyCode.Mouse1))
+			{
+				CinemachineVirtualCameraInstance.Instance.SetFov(ZoomFov, ZoomInTime);
+			}
+			else
+			{
+				CinemachineVirtualCameraInstance.Instance.ResetFov(ZoomOutTime);
+			}
+			
 			if (GunAnimator != null)
 			{
 

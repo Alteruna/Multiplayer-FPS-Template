@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4040693773569220337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4040693773569220335}
+  - component: {fileID: 4040693773569220336}
+  m_Layer: 0
+  m_Name: EFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4040693773569220335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040693773569220337}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4040693773569220336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040693773569220337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f28ff02364412f937420127d3a1769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FleshImpactPrefab: {fileID: 5773802275824907572, guid: dc82d5876e62a3749ae1dfd7aa4bd5c6, type: 3}
+  MetalImpactPrefab: {fileID: 7550867248454680558, guid: a817a8e6b1420a94d951fc8b12aab85e, type: 3}
+  SandImpactPrefab: {fileID: 1598995400320556737, guid: 1672db1c4021c9b4490476bc9bcc1595, type: 3}
+  StoneImpactPrefab: {fileID: 1053356080687350649, guid: b24264fafd22eff48b5a63a67f4ca3b8, type: 3}
+  WoodImpactPrefab: {fileID: 2743934482128375233, guid: c9c3b1f8269e9e64c90e17505dd17369, type: 3}
+  BulletEFPrefab: {fileID: 5416920202388465431, guid: 595be7b1c4ef36244a793836f4bf06a5, type: 3}
