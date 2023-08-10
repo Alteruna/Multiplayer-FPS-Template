@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AlterunaFPS
 {
@@ -19,7 +18,7 @@ namespace AlterunaFPS
 			Cursor.lockState = CursorLockMode.Locked;
 		}
 
-		private void OnEnable()
+		public void OnEnable()
 		{
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.None;
