@@ -1044,10 +1044,10 @@ MonoBehaviour:
       - m_Target: {fileID: 634108170}
         m_TargetAssemblyTypeName: AlterunaFPS.MainMenu, Assembly-CSharp
         m_MethodName: LoadScene
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 102900000, guid: d467bb58a331a364da0289e764f6c986, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEditor.SceneAsset, UnityEditor.CoreModule
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1571,10 +1571,10 @@ MonoBehaviour:
       - m_Target: {fileID: 827749017}
         m_TargetAssemblyTypeName: AlterunaFPS.MainMenu, Assembly-CSharp
         m_MethodName: LoadScene
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 102900000, guid: 96cc2e8b381c93d469710453434839ad, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEditor.SceneAsset, UnityEditor.CoreModule
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2031,18 +2031,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 634108170}
-        m_TargetAssemblyTypeName: AlterunaFPS.MainMenu, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 634108171}
         m_TargetAssemblyTypeName: AlterunaFPS.GameInitController, Assembly-CSharp
         m_MethodName: SetHost
@@ -2054,6 +2042,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 634108170}
+        m_TargetAssemblyTypeName: AlterunaFPS.MainMenu, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 102900000, guid: d467bb58a331a364da0289e764f6c986, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEditor.SceneAsset, UnityEditor.CoreModule
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1765136455
 MonoBehaviour:

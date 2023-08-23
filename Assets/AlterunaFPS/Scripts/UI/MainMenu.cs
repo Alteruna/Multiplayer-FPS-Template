@@ -12,6 +12,16 @@ namespace AlterunaFPS
 			UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
 		}
 		
+		public void LoadScene(string sceneName)
+		{
+			UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+		}
+		
+		public void LoadScene(SceneAsset scene)
+		{
+			UnityEngine.SceneManagement.SceneManager.LoadScene(scene.name);
+		}
+		
 		public void Quit()
 		{
 #if UNITY_EDITOR
