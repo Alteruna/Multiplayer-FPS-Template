@@ -129,7 +129,7 @@ namespace AlterunaFPS
 			public GameObject Obj;
 			public ParticleSystem Particle;
 			public bool HaveParticle;
-			public bool IsPlaying => Obj.activeSelf && (!HaveParticle || Particle.isPlaying);
+			public bool IsPlaying => Obj.activeSelf && (!HaveParticle || Particle.time < Particle.main.duration);
 
 			public void SetPosRot(Transform parent, Vector3 pos, Vector3 normal)
 			{
