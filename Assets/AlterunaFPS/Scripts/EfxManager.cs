@@ -129,14 +129,15 @@ namespace AlterunaFPS
 			public GameObject Obj;
 			public ParticleSystem Particle;
 			public bool HaveParticle;
-			public bool IsPlaying => Obj.activeSelf || HaveParticle && Particle.isPlaying;
+			public bool IsPlaying => Obj.activeSelf && (!HaveParticle || Particle.isPlaying);
 
-			public void SetPosRot(Transform parent, Vector3 pos, Vector3 dir)
+			public void SetPosRot(Transform parent, Vector3 pos, Vector3 normal)
 			{
 				Transform t = Obj.transform;
 				t.SetParent(parent);
 				t.position = pos;
-				t.rotation = Quaternion.LookRotation(dir);
+				t.rotation = Quaternion.FromToRotation(Vector3.forward, normal);
+				t.lossyScale.Set(1, 1, 1);
 			}
 			
 			public void SetPosRot(Vector3 pos, Vector3 dir)
