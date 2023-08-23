@@ -29,10 +29,6 @@ For detailed documentation and guides on how to use the Alteruna Multiplayer, re
 
 If you encounter any issues or have questions about the Alteruna Multiplayer FPS Template or Alteruna Multiplayer, you can reach out for support. Visit [our Discord server](https://discord.gg/QT8KTe2Hzk) to access the support resources and engage with the community. The community forums and channels are excellent places to connect with other developers, share your experiences, and collaborate on projects.
 
-## License
-
-The Alteruna Multiplayer FPS Template is released under the [insert license name]. Make sure to review and comply with the license terms and conditions before using the template in your projects.
-
 ## Contributions
 
 Contributions to the [Alteruna Multiplayer FPS Template](https://github.com/Alteruna/Multiplayer-FPS-Template) are welcome! If you have ideas for improvements or would like to contribute code. Your contributions can help enhance the template and benefit the entire community of developers.
