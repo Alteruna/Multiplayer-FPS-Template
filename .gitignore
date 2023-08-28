@@ -64,6 +64,9 @@ sysinfo.txt
 *.unitypackage
 *.app
 
+# Allow .unitypackage files parts of assets
+![Aa]ssets/*/*.unitypackage
+
 # Crashlytics generated file
 crashlytics-build.properties
 
