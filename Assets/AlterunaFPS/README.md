@@ -19,7 +19,11 @@ To get started with the Alteruna Multiplayer FPS Template, the following is requ
 * Unity version 2021.3 or newer.
 * Alteruna Multiplayer works best for 1.2.3 or newer but older versions will work too.
 
-If you are have issues with connection, select the multiplayer object and make sure that you hava a valid application ID.
+Make sure that the scenes are added to the build index.
+
+If you are have issues with connection, select the multiplayer object and ensure that you hava a valid application ID.
+
+For URP, open the 'URP-Materials.unitypackage' with unity to unpack the URP materials.
 
 ## Documentation
 

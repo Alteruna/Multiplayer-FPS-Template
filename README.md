@@ -14,3 +14,6 @@ Issues regarding the [Alteruna Multiplayer SDK](https://assetstore.unity.com/pac
 If you having issues regarding connection, make sure you have an Application ID in your multiplayer component and make sure you have saved the scene.
 
 If you getting runtime error while in offline mode, rest assured that that issue does not affect the experience and is resolved in Alteruna Multiplayer 1.2.3
+
+License
+The Alteruna Multiplayer FPS Template is released under the [Alteruna Multiplayer SDK EULA](https://www.alteruna.com/alteruna-multiplayer-sdk-eula). Make sure to review and comply with the license terms and conditions before using the template in your projects.
