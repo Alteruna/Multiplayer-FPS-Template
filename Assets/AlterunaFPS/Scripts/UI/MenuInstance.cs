@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace AlterunaFPS
 {
@@ -27,17 +28,12 @@ namespace AlterunaFPS
 		
 		public void LoadScene(int sceneIndex)
 		{
-			UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
+			SceneManager.LoadScene(sceneIndex);
 		}
 		
 		public void LoadScene(string sceneName)
 		{
-			UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-		}
-		
-		public void LoadScene(SceneAsset scene)
-		{
-			UnityEngine.SceneManagement.SceneManager.LoadScene(scene.name);
+			SceneManager.LoadScene(sceneName);
 		}
 	}
 }
