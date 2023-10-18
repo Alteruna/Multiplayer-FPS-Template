@@ -13,7 +13,7 @@ namespace AlterunaFPS
 		{
 			if (GameInitSet.Host)
 			{
-				Multiplayer.Connected.AddListener(CallInitHost);
+				Multiplayer.OnConnected.AddListener(CallInitHost);
 				InitHost.Invoke();
 			}
 			else
@@ -24,7 +24,7 @@ namespace AlterunaFPS
 
 		private void CallInitHost(Multiplayer arg0, Endpoint arg1)
 		{
-			arg0.Connected.RemoveListener(CallInitHost);
+			arg0.OnConnected.RemoveListener(CallInitHost);
 			InitHostConnect.Invoke();
 		}
 	}

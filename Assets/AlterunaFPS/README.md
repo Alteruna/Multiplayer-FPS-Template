@@ -17,7 +17,7 @@ The Alteruna Multiplayer FPS Template is a versatile Unity template designed to 
 To get started with the Alteruna Multiplayer FPS Template, the following is required:
 
 * Unity version 2021.3 or newer.
-* Alteruna Multiplayer works best for 1.2.3 or newer but older versions will work too.
+* Alteruna Multiplayer 1.3.0 or newer.
 
 Make sure that the scenes are added to the build index.
 
