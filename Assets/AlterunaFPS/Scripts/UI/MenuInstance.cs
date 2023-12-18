@@ -8,22 +8,28 @@ namespace AlterunaFPS
 	{
 		public static GameObject Instance;
 
+		[SerializeField] private GameObject _menuObject;
+
+
 		private void Awake()
 		{
-			Instance = gameObject;
-			gameObject.SetActive(false);
+			Instance = _menuObject;
+			_menuObject.SetActive(false);
 		}
 
-		private void OnDisable()
+		private void Update()
 		{
-			Cursor.visible = false;
-			Cursor.lockState = CursorLockMode.Locked;
+			if (Input.GetKeyDown(KeyCode.Escape))
+			{
+				ToggleMenu();
+			}
 		}
 
-		public void OnEnable()
+		private void ToggleMenu()
 		{
-			Cursor.visible = true;
-			Cursor.lockState = CursorLockMode.None;
+			_menuObject.SetActive(!_menuObject.activeSelf);
+			Cursor.visible = _menuObject.activeSelf;
+			Cursor.lockState = _menuObject.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
 		}
 		
 		public void LoadScene(int sceneIndex)

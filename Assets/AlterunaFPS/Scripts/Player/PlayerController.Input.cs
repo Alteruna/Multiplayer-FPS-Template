@@ -37,15 +37,5 @@ namespace AlterunaFPS
 			_reload = new SyncedKey(_input, KeyCode.R, SyncedKey.KeyMode.KeyDown);
 			_camera = new SyncedKey(_input, KeyCode.V, SyncedKey.KeyMode.ToggleKeyDown);
 		}
-		
-		private void Inputs()
-		{
-			// Toggle menu
-			if (Input.GetKeyDown(KeyCode.Escape))
-			{
-				MenuInstance.Instance.SetActive(!MenuInstance.Instance.activeSelf);
-			}
-		}
-		
 	}
 }

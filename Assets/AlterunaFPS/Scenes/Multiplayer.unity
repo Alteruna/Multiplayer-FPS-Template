@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 619e305f5165a9946b7f72464e44ca4a, type: 3}
   m_Sun: {fileID: 2114283754330233425}
-  m_IndirectSpecularColor: {r: 0.029152213, g: 0.064445764, b: 0.12695098, a: 1}
+  m_IndirectSpecularColor: {r: 0.1727952, g: 0.2600245, b: 0.36693013, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -459,7 +459,7 @@ MonoBehaviour:
   InitHost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1006881273}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AlterunaFPS.MenuInstance, Assembly-CSharp
         m_MethodName: Awake
         m_Mode: 1
@@ -489,7 +489,7 @@ MonoBehaviour:
   InitClient:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1006881273}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AlterunaFPS.MenuInstance, Assembly-CSharp
         m_MethodName: OnEnable
         m_Mode: 1
@@ -508,10 +508,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1492217425110041999, guid: 5acbf30c8f8ab9943a57f8e07435bf21, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2428615326631116568, guid: 5acbf30c8f8ab9943a57f8e07435bf21, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -603,17 +599,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2428615326955715434, guid: 5acbf30c8f8ab9943a57f8e07435bf21, type: 3}
   m_PrefabInstance: {fileID: 1006881271}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1006881273 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3436837249249130053, guid: 5acbf30c8f8ab9943a57f8e07435bf21, type: 3}
-  m_PrefabInstance: {fileID: 1006881271}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0595a9f6076e4452ae3a0c1e4992d774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1194883535
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +676,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8763101912591529871, guid: 5a577542a281e0a448dc3b383023e1f2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8763101912591529871, guid: 5a577542a281e0a448dc3b383023e1f2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8763101912917073179, guid: 5a577542a281e0a448dc3b383023e1f2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -709,6 +702,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8763101912960744424, guid: 5a577542a281e0a448dc3b383023e1f2, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8763101912960744424, guid: 5a577542a281e0a448dc3b383023e1f2, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8763101913419821390, guid: 5a577542a281e0a448dc3b383023e1f2, type: 3}
@@ -1047,7 +1044,7 @@ MonoBehaviour:
   - Name: Max
     NetLOD: 4
     Users: 
-  MaxPlayers: 10
+  _maxPlayers: 10
   AvatarSpawning: 1
   AvatarPrefab: {fileID: 8601427866244821769, guid: 2345b75529ffb3540a4ff000a317c26c, type: 3}
   AvatarSpawnLocation: {fileID: 0}
@@ -1061,16 +1058,16 @@ MonoBehaviour:
   - {fileID: 1194883536}
   - {fileID: 2104033888}
   - {fileID: 1599396344}
-  Connected:
+  OnConnected:
     m_PersistentCalls:
       m_Calls: []
-  Disconnected:
+  OnDisconnected:
     m_PersistentCalls:
       m_Calls: []
-  NetworkError:
+  OnNetworkError:
     m_PersistentCalls:
       m_Calls: []
-  RoomJoined:
+  OnRoomJoined:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 988778928}
@@ -1085,40 +1082,49 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  RoomLeft:
+  OnRoomLeft:
     m_PersistentCalls:
       m_Calls: []
-  RoomListUpdated:
+  OnRoomListUpdated:
     m_PersistentCalls:
       m_Calls: []
-  OtherUserJoined:
+  OnOtherUserJoined:
     m_PersistentCalls:
       m_Calls: []
-  OtherUserLeft:
+  OnOtherUserLeft:
     m_PersistentCalls:
       m_Calls: []
-  JoinRejected:
+  OnJoinRejected:
     m_PersistentCalls:
       m_Calls: []
-  PacketSent:
+  OnPacketSent:
     m_PersistentCalls:
       m_Calls: []
-  PacketReceived:
+  OnPacketReceived:
     m_PersistentCalls:
       m_Calls: []
-  LockRequested:
+  OnLockRequested:
     m_PersistentCalls:
       m_Calls: []
-  LockAquired:
+  OnLockAcquired:
     m_PersistentCalls:
       m_Calls: []
-  LockDenied:
+  OnLockDenied:
     m_PersistentCalls:
       m_Calls: []
-  LockUnlocked:
+  OnLockUnlocked:
     m_PersistentCalls:
       m_Calls: []
-  ForceSynced:
+  OnForceSynced:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRpcReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRpcSent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRpcRegistered:
     m_PersistentCalls:
       m_Calls: []
   DevClientIndex: 0

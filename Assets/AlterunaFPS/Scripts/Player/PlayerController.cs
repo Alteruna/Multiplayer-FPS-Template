@@ -50,7 +50,6 @@ namespace AlterunaFPS
 
 		private void Update()
 		{
-			Inputs();
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
