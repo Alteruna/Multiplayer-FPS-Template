@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 namespace AlterunaFPS
 {
 	public partial class PlayerController
 	{
-		
 		[Header("Health")]
 		public float MaxHealth = 20f;
 		
@@ -21,12 +23,18 @@ namespace AlterunaFPS
 			}
 		}
 
-		private void OnDeath()
+		private void OnDeath(ushort senderID)
 		{
 			if (_possesed)
 			{
 				CinemachineVirtualCameraInstance.Instance.gameObject.SetActive(false);
 				CinemachineVirtualCameraInstance.Instance.Follow(null);
+
+					ScoreBoard.Instance.AddDeaths(Avatar.Possessor, 1);
+					ScoreBoard.Instance.AddKills(senderID, 1);
+				if (_isHost)
+                {
+                }
 			}
 			
 			_health.HealthPoints = MaxHealth;
@@ -37,13 +45,22 @@ namespace AlterunaFPS
 			}
 			else
 			{
+				int spawnIndex = 0;
+				int spawnLocationsCount = Multiplayer.AvatarSpawnLocations.Count;
+
 				// get random spawn location
-				int spawnIndex;
-				do
+				if (spawnLocationsCount > 1)
 				{
-					spawnIndex = Random.Range(0, Multiplayer.AvatarSpawnLocations.Count);
+					do
+					{
+						spawnIndex = Random.Range(0, spawnLocationsCount);
+					}
+					while (_lastSpawnIndex == spawnIndex);
 				}
-				while (_lastSpawnIndex == spawnIndex);
+				else if (spawnLocationsCount <= 0)
+				{
+					throw new IndexOutOfRangeException("AvatarSpawnLocations must be greater than zero.");
+				}
 
 				Transform spawn = Multiplayer.AvatarSpawnLocations.Count > 0 ? 
 					Multiplayer.AvatarSpawnLocations[spawnIndex] : 
@@ -57,6 +74,5 @@ namespace AlterunaFPS
 			}
 			RespawnController.Respawn(gameObject);
 		}
-		
 	}
 }

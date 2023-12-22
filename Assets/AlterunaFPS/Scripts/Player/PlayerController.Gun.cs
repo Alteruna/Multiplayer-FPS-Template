@@ -102,9 +102,9 @@ namespace AlterunaFPS
 					if (Input.GetKeyDown(KeyCode.Mouse0) && _gunMagazine > 0)
 					{
 						if (_offline)
-							FireBullet(FirePoint.position, FirePoint.forward);
+							FireBullet(0, FirePoint.position, FirePoint.forward);
 						else
-							BroadcastRemoteMethod(nameof(FireBullet), FirePoint.position, FirePoint.forward, 10f, 10f);
+							BroadcastRemoteMethod(nameof(FireBullet), Multiplayer.GetUser().Index, FirePoint.position, FirePoint.forward, 10f, 10f);
 						//FireBullet(FirePoint.position, FirePoint.forward);
 						return;
 					}
@@ -124,7 +124,7 @@ namespace AlterunaFPS
 		}
 		
 		[SynchronizableMethod]
-		private void FireBullet(Vector3 origin, Vector3 direction, float penetration = 10f, float damage = 10f)
+		private void FireBullet(ushort senderID, Vector3 origin, Vector3 direction, float penetration = 10f, float damage = 10f)
 		{
 			GunAnimator.Play(_animIDGunFire);
 			
@@ -151,7 +151,7 @@ namespace AlterunaFPS
 					{
 						DrawLine(i, Color.red);
 						// fragmentation damage
-						target.TakeDamage(Mathf.Min(2 * currentPenetration / penetration, 1f) * damage * distanceDamageDropoff);
+						target.TakeDamage(senderID, Mathf.Min(2 * currentPenetration / penetration, 1f) * damage * distanceDamageDropoff);
 						hitDistance = hits[i].distance;
 						
 						// If penetration is not enough to go through the target, stop the bullet
@@ -159,7 +159,7 @@ namespace AlterunaFPS
 					}
 
 					// penetration damage with dropoff
-					target.TakeDamage(currentPenetration / penetration * damage * distanceDamageDropoff);
+					target.TakeDamage(senderID, currentPenetration / penetration * damage * distanceDamageDropoff);
 					DrawLine(i, Color.yellow);
 
 					// decreases its penetration after the projectile have exited the target

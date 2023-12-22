@@ -13,6 +13,7 @@ namespace AlterunaFPS
 		private bool _force;
 		
 		private bool _isOwner = true;
+		private bool _isHost = false;
 		private bool _offline;
 		private bool _possesed;
 
@@ -22,12 +23,14 @@ namespace AlterunaFPS
 			if (Avatar == null)
 			{
 				_isOwner = true;
+				_isHost = true;
 				_offline = true;
 				OnPossession();
 			}
 			else
 			{
 				_isOwner = Avatar.IsOwner;
+				_isHost = Avatar.Possessor.IsHost;
 				_possesed = Avatar.IsPossessed;
 				
 				Avatar.OnPossessed.AddListener(_ =>
