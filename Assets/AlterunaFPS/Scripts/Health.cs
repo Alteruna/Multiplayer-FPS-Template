@@ -19,7 +19,7 @@ namespace AlterunaFPS
 		public float DamageMultiplier = 1f;
 		public float HealthPoints = 0f;
 		
-		public UnityEvent OnDeath;
+		public UnityEvent<ushort> OnDeath;
 		
 		// Only apply once per health family.
 		private float _lastDamage;
@@ -33,9 +33,9 @@ namespace AlterunaFPS
 			}
 		}
 
-		public void TakeDamage(float damage) => TakeDamage(damage, Time.frameCount);
+		public void TakeDamage(ushort senderID, float damage) => TakeDamage(senderID, damage, Time.frameCount);
 
-		private void TakeDamage(float damage, int damageIndex)
+		private void TakeDamage(ushort senderID, float damage, int damageIndex)
 		{
 			damage *= DamageMultiplier;
 
@@ -44,7 +44,7 @@ namespace AlterunaFPS
 			{
 				// Undo last damage before applying new damage.
 				if (damage > _lastDamage)
-					TakeDamage(-_lastDamage, damageIndex);
+					TakeDamage(senderID, -_lastDamage, damageIndex);
 				// If new damage is less than last damage, ignore.
 				else return;
 			}
@@ -54,15 +54,21 @@ namespace AlterunaFPS
 			// apply damage
 			if (Parent != null)
 			{
-				Parent.TakeDamage(damage);
+				Parent.TakeDamage(senderID, damage);
 			}
 			else if (Alive)
 			{
 				HealthPoints -= damage;
+
+				if (transform.root.CompareTag("Player"))
+                {
+					ScoreBoard.Instance.AddScore(senderID, (int)damage);
+				}
+
 				if (HealthPoints <= 0f)
 				{
 					HealthPoints = 0f;
-					OnDeath.Invoke();
+					OnDeath.Invoke(senderID);
 				}
 			}
 		}
