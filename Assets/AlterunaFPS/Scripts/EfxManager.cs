@@ -135,15 +135,6 @@ namespace AlterunaFPS
 			public bool HaveParticle;
 			public bool IsPlaying => Obj != null && Obj.activeSelf && (!HaveParticle || Particle.time < Particle.main.duration);
 
-			public bool Test()
-            {
-				bool b1 = Obj.activeSelf;
-				var testt = Particle.main;
-				bool b2 = Particle.time < testt.duration;
-				return b1 && b2;
-					//Obj.activeSelf && (!HaveParticle || Particle.time < Particle.main.duration)
-
-			}
 			public void SetPosRot(Transform parent, Vector3 pos, Vector3 normal)
 			{
 				Transform t = Obj.transform;
