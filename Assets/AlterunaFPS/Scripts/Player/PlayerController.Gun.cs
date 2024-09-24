@@ -16,6 +16,7 @@ namespace AlterunaFPS
 		public float GunFireTime = 0.2f;
 		public float GunReloadTime = 2.35f;
 		public float DistanceFromBody = 0.3f;
+		public bool GunAutomatic = false;
 		[Header("Aiming")]
 		public float ZoomFov = 30f;
 		public float ZoomInTime = 0.2f;
@@ -46,15 +47,18 @@ namespace AlterunaFPS
 
 		private void GunAction(bool lockInput = false)
 		{
-			if (Input.GetKey(KeyCode.Mouse1))
+			if (_isOwner)
 			{
-				CinemachineVirtualCameraInstance.Instance.SetFov(ZoomFov, ZoomInTime);
+				if (Input.GetKey(KeyCode.Mouse1))
+				{
+					CinemachineVirtualCameraInstance.Instance.SetFov(ZoomFov, ZoomInTime);
+				}
+				else
+				{
+					CinemachineVirtualCameraInstance.Instance.ResetFov(ZoomOutTime);
+				}
 			}
-			else
-			{
-				CinemachineVirtualCameraInstance.Instance.ResetFov(ZoomOutTime);
-			}
-			
+
 			if (GunAnimator != null)
 			{
 
@@ -99,7 +103,7 @@ namespace AlterunaFPS
 				// Only allow sending the fire command if the player is owner.
 				if (_isOwner)
 				{
-					if (Input.GetKeyDown(KeyCode.Mouse0) && _gunMagazine > 0)
+					if (_gunMagazine > 0 && ((GunAutomatic && Input.GetKey(KeyCode.Mouse0)) || (!GunAutomatic && Input.GetKeyDown(KeyCode.Mouse0))))
 					{
 						if (_offline)
 							FireBullet(0, FirePoint.position, FirePoint.forward);
