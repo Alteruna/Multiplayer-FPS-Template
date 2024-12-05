@@ -15,6 +15,8 @@ namespace AlterunaFPS
 		public int GunMagazineSize = 5;
 		public float GunFireTime = 0.2f;
 		public float GunReloadTime = 2.35f;
+		public float GunDamage = 10f;
+		public float GunPenetration = 10f;
 		public float DistanceFromBody = 0.3f;
 		public bool GunAutomatic = false;
 		[Header("Aiming")]
@@ -106,9 +108,9 @@ namespace AlterunaFPS
 					if (_gunMagazine > 0 && ((GunAutomatic && Input.GetKey(KeyCode.Mouse0)) || (!GunAutomatic && Input.GetKeyDown(KeyCode.Mouse0))))
 					{
 						if (_offline)
-							FireBullet(0, FirePoint.position, FirePoint.forward);
+							FireBullet(0, FirePoint.position, FirePoint.forward, GunPenetration, GunDamage);
 						else
-							BroadcastRemoteMethod(nameof(FireBullet), Multiplayer.GetUser().Index, FirePoint.position, FirePoint.forward, 10f, 10f);
+							BroadcastRemoteMethod(nameof(FireBullet), Multiplayer.GetUser().Index, FirePoint.position, FirePoint.forward, GunPenetration, GunDamage);
 						//FireBullet(FirePoint.position, FirePoint.forward);
 						return;
 					}
