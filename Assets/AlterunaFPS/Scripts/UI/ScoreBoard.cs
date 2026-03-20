@@ -1,11 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using Alteruna;
-using Alteruna.Scoreboard;
-using Alteruna.Trinity;
+using Alteruna.Multiplayer;
+using Alteruna.Multiplayer.Core;
+using Alteruna.Multiplayer.Core.MethodArguments;
+using Alteruna.Multiplayer.Core.PacketProcessing.Reader;
+using Alteruna.Multiplayer.Core.PacketProcessing.Writer;
+using Alteruna.Multiplayer.EventArgument;
 using TMPro;
 using UnityEngine;
 
@@ -13,13 +14,7 @@ using UnityEngine;
 public class ScoreBoard : Synchronizable
 {
     private static ScoreBoard _instance;
-    public static ScoreBoard Instance
-    {
-        get
-        {
-            return _instance;
-        }
-    }
+    public static ScoreBoard Instance => _instance;
 
 
     [SerializeField]
@@ -90,19 +85,19 @@ public class ScoreBoard : Synchronizable
         }
     }
 
-    private void OnRoomJoined(Multiplayer arg0, Room arg1, User arg2)
+    private void OnRoomJoined(RoomJoinedEvent @event)
     {
-        AddRow(arg2.Index, arg2.Name);
+        AddRow(@event.User.Index, @event.User.Name);
     }
 
-    private void OtherUserJoined(Multiplayer multiplayer, User user)
+    private void OtherUserJoined(OtherUserJoinedEvent @event)
     {
-        AddRow(user.Index, user.Name);
+        AddRow(@event.User.Index,  @event.User.Name);
     }
 
-    private void OtherUserLeft(Multiplayer multiplayer, User user)
+    private void OtherUserLeft(OtherUserLeftEvent @event)
     {
-        RemoveRow(user.Index);
+        RemoveRow(@event.User.Index);
     }
 
     private void ScoreObjectChanged(int userID, IScoreObject scoreObj)
@@ -195,14 +190,14 @@ public class ScoreBoard : Synchronizable
     
     #endregion
 
-    public override void Serialize(ITransportStreamWriter processor, byte LOD, bool forceSync = false)
-    {
-        _forceSync = forceSync;
-        base.Serialize(processor, LOD, forceSync);
+	public override void Serialize(ITransportStreamWriter processor, SerializeInfo info)
+	{
+        _forceSync = info.ForceSync;
+        base.Serialize(processor, info);
     }
 
-    public override void AssembleData(Writer writer, byte LOD = 100)
-    {
+	public override void AssembleData(Writer writer, SerializeInfo info)
+	{
         if (_forceSync)
         {
             writer.Write(true);
@@ -226,8 +221,8 @@ public class ScoreBoard : Synchronizable
         _serialationQueue.Clear();
     }
 
-    public override void DisassembleData(Reader reader, byte LOD = 100)
-    {
+	public override void DisassembleData(Reader reader, UnserializeInfo info)
+	{
         try
         {
             bool forceSync = reader.ReadBool();

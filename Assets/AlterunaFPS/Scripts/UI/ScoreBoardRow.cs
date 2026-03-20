@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Alteruna;
-using Alteruna.Scoreboard;
+using Alteruna.Multiplayer;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ScoreBoardRow : MonoBehaviour
 {

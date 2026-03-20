@@ -1,4 +1,5 @@
-﻿using Alteruna;
+﻿using Alteruna.Multiplayer;
+using Alteruna.Multiplayer.EventArgument;
 using UnityEngine.Events;
 
 namespace AlterunaFPS
@@ -24,15 +25,15 @@ namespace AlterunaFPS
 			}
 		}
 
-		private void CallInitHost(Multiplayer arg0, Endpoint arg1)
+		private void CallInitHost(ConnectedEvent @event)
 		{
-			arg0.OnConnected.RemoveListener(CallInitHost);
+			@event.Controller.OnConnected.RemoveListener(CallInitHost);
 			InitHostConnect.Invoke();
 		}
 
-		private void OnJoin(Multiplayer arg0, Room arg1, User arg2)
+		private void OnJoin(RoomJoinedEvent @event)
 		{
-			arg0.OnRoomJoined.RemoveListener(OnJoin);
+			@event.Controller.OnRoomJoined.RemoveListener(OnJoin);
             //ScoreBoard.Instance.GetOrAddRow(arg2);
             //ScoreBoard.Instance.AddRow(arg2.Index, arg2.Name);
         }

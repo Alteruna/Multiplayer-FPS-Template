@@ -1,6 +1,5 @@
-using Alteruna;
+using Alteruna.Multiplayer.InputSynchronizable;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace AlterunaFPS
 {

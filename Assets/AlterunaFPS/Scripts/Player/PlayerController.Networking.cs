@@ -1,5 +1,8 @@
-﻿using Alteruna;
-using Alteruna.Trinity;
+﻿using Alteruna.Multiplayer;
+using Alteruna.Multiplayer.Core;
+using Alteruna.Multiplayer.Core.MethodArguments;
+using Alteruna.Multiplayer.Core.PacketProcessing.Reader;
+using Alteruna.Multiplayer.Core.PacketProcessing.Writer;
 using UnityEngine;
 
 namespace AlterunaFPS
@@ -52,13 +55,13 @@ namespace AlterunaFPS
 			}
 		}
 
-		public override void Serialize(ITransportStreamWriter processor, byte LOD, bool forceSync = false)
+		public override void Serialize(ITransportStreamWriter processor, SerializeInfo info)
 		{
-			_force = forceSync;
-			base.Serialize(processor, LOD, forceSync);
+			_force = info.ForceSync;
+			base.Serialize(processor, info);
 		}
 
-		public override void AssembleData(Writer writer, byte LOD = 100)
+		public override void AssembleData(Writer writer, SerializeInfo info)
 		{
 			var p = transform.position;
 			byte flags = _force
@@ -83,7 +86,7 @@ namespace AlterunaFPS
 				writer.Write((byte)_gunMagazine);
 		}
 
-		public override void DisassembleData(Reader reader, byte LOD = 100)
+		public override void DisassembleData(Reader reader, UnserializeInfo info)
 		{
 			byte flags = reader.ReadByte();
 			//Debug.Log("DisassembleData " + flags);

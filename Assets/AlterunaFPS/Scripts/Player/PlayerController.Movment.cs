@@ -6,7 +6,7 @@ namespace AlterunaFPS
 	{
 		
 		[Header("Player")]
-		public Alteruna.Avatar Avatar;
+		public Alteruna.Multiplayer.Avatar Avatar;
 		
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 2.0f;
