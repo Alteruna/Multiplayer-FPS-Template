@@ -711,7 +711,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: ALTERUNA;ALTERUNA_REGISTERED;ALTERUNA_V_2_X_X_X;ALTERUNA_V_2_0_X_X;ALTERUNA_V_2_0_1_X;ALTERUNA_V_2_0_1_5
+    Standalone: ALTERUNA;ALTERUNA_REGISTERED;ALTERUNA_V_2_X_X_X;ALTERUNA_V_2_1_X_X;ALTERUNA_V_2_1_1_X;ALTERUNA_V_2_1_1_6
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

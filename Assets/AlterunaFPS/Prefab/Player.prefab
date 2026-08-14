@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 352513294090459949}
   m_Layer: 0
-  m_Name: PlayerCameraRoot
+  m_Name: PlayerThirdPersonCameraRoot
   m_TagString: CinemachineTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2254,7 +2254,6 @@ GameObject:
   - component: {fileID: 4708983315830995147}
   - component: {fileID: 1709546744555315889}
   - component: {fileID: 5337464628717331067}
-  - component: {fileID: 1709546744555315894}
   - component: {fileID: 8601427866244821768}
   - component: {fileID: 8601427866244821769}
   - component: {fileID: 8601427866244821771}
@@ -2323,21 +2322,6 @@ CharacterController:
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.93, z: 0}
---- !u!114 &1709546744555315894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5337464628717331057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 340d5d4fccc0402994e649f9b94725e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IkActive: 1
-  RightHandTarget: {fileID: 8601427865917686949}
-  LeftHandTarget: {fileID: 8601427865291560305}
 --- !u!114 &8601427866244821768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2356,38 +2340,21 @@ MonoBehaviour:
   - Name: Min
     NetLOD: 0
     Frequency: -1
-    Pending: 0
-    LastUpdated: 0
-    NeverString: Never
-    RealtimeString: Realtime
   - Name: Low
     NetLOD: 1
     Frequency: 0
-    Pending: 0
-    LastUpdated: 0
-    NeverString: Never
-    RealtimeString: Realtime
   - Name: Mid
     NetLOD: 2
     Frequency: 0
-    Pending: 0
-    LastUpdated: 0
-    NeverString: Never
-    RealtimeString: Realtime
   - Name: High
     NetLOD: 3
     Frequency: 0
-    Pending: 0
-    LastUpdated: 0
-    NeverString: Never
-    RealtimeString: Realtime
   - Name: Max
     NetLOD: 4
     Frequency: 500
-    Pending: 0
-    LastUpdated: 0
-    NeverString: Never
-    RealtimeString: Realtime
+  Reliability: 2
+  RightHandTarget: {fileID: 8601427865917686949}
+  LeftHandTarget: {fileID: 8601427865291560305}
   _firstPerson: 1
   FirstPersonCameraTarget: {fileID: 8601427865539017300}
   ThirdPersonCameraTarget: {fileID: 352513294090459949}
@@ -2398,7 +2365,6 @@ MonoBehaviour:
   FirstPersonCameraRotationSmoothing: 0.3
   GunRoot: {fileID: 8601427864537486362}
   FirePoint: {fileID: 8601427865155832438}
-  IKController: {fileID: 1709546744555315894}
   GunAnimator: {fileID: 8601427866144109624}
   BulletCollisionLayers:
     serializedVersion: 2
@@ -2406,7 +2372,13 @@ MonoBehaviour:
   GunMagazineSize: 19
   GunFireTime: 0.2
   GunReloadTime: 2.35
+  GunDamage: 10
+  GunPenetration: 10
   DistanceFromBody: 0.4
+  GunAutomatic: 0
+  ZoomFov: 30
+  ZoomInTime: 0.2
+  ZoomOutTime: 0.18
   MaxHealth: 50
   Avatar: {fileID: 8601427866244821769}
   MoveSpeed: 2
@@ -2445,11 +2417,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5337464628717331057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -2141718255, guid: 0ae8d181602a00248a82f64a684a1c88, type: 3}
+  m_Script: {fileID: 11500000, guid: 70c7b1bdd0a94feba5a5f3e28f3e8de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Multiplayer: {fileID: 0}
-  IsMe: 0
+  IsPossessor: 0
   IsPossessed: 0
   OnPossessed:
     m_PersistentCalls:
@@ -2466,7 +2438,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5337464628717331057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1488051761, guid: 0ae8d181602a00248a82f64a684a1c88, type: 3}
+  m_Script: {fileID: 11500000, guid: 2632c6ec26e8d424d9f61157d0d4031c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Multiplayer: {fileID: 0}
@@ -3916,7 +3888,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8601427865539017300}
   m_Layer: 0
-  m_Name: PlayerCameraRoot
+  m_Name: PlayerFirstPersonCameraRoot
   m_TagString: CinemachineTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

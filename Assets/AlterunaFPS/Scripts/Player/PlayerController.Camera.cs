@@ -80,18 +80,14 @@ namespace AlterunaFPS
 		
 		private void CameraRotation(bool lockInput = false)
 		{
-			// smooths POV hands
-			if (_isOwner && _firstPerson)
-				_animator.Update(0);
-			
-			bool AllowInput = _isOwner && !lockInput;
+			bool allowInput = _isOwner && !lockInput;
 
 			var oldYaw = _cinemachineTargetYaw;
 			var oldPitch = _cinemachineTargetPitch;
 
 			FirstPerson = _defaultCamera ? !_camera : _camera;
 
-			if (AllowInput)
+			if (allowInput)
 				_cinemachineTargetYaw += MouseX;
 
 			if (_firstPerson)
@@ -122,7 +118,7 @@ namespace AlterunaFPS
 				_cinemachineTargetYaw = NormalizeAnglePos(_cinemachineTargetYaw);
 			}
 
-			if (AllowInput)
+			if (allowInput)
 			{
 				_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch - MouseY, BottomClamp, TopClamp);
 

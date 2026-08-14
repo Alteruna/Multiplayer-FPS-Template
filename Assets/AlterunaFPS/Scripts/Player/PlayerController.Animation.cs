@@ -4,6 +4,11 @@ namespace AlterunaFPS
 {
 	public partial class PlayerController
 	{
+		[Header("IK")]
+		public Transform RightHandTarget;
+		public Transform LeftHandTarget;
+		private bool _ikActive = true;
+		
 		private int _animIDSpeed;
 		private int _animIDGrounded;
 		private int _animIDJump;
@@ -58,6 +63,27 @@ namespace AlterunaFPS
 				AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
 			}
 		}
-		
+
+		private void UpdateIK()
+		{
+			if(_animator) {
+
+				float v = _ikActive ? 1 : 0;
+	
+				_animator.SetIKPositionWeight(AvatarIKGoal.RightHand,v);
+				_animator.SetIKRotationWeight(AvatarIKGoal.RightHand,v);
+				_animator.SetIKPositionWeight(AvatarIKGoal.LeftHand,v);
+				_animator.SetIKRotationWeight(AvatarIKGoal.LeftHand,v);
+
+				if (_ikActive)
+				{
+					// Set the right hand target position and rotation, if one has been assigned
+					_animator.SetIKPosition(AvatarIKGoal.RightHand, RightHandTarget.position);
+					_animator.SetIKRotation(AvatarIKGoal.RightHand, RightHandTarget.rotation);
+					_animator.SetIKPosition(AvatarIKGoal.LeftHand, LeftHandTarget.position);
+					_animator.SetIKRotation(AvatarIKGoal.LeftHand, LeftHandTarget.rotation);
+				}
+			}
+		}
 	}
 }

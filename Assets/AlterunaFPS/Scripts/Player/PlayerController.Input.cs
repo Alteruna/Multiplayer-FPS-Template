@@ -1,4 +1,4 @@
-using Alteruna.Multiplayer.InputSynchronizable;
+using Alteruna.Multiplayer.Unity.InputSynchronizable;
 using UnityEngine;
 
 namespace AlterunaFPS

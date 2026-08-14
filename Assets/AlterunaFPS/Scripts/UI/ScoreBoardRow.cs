@@ -1,4 +1,4 @@
-using Alteruna.Multiplayer;
+using Alteruna.Multiplayer.Unity;
 using TMPro;
 using UnityEngine;
 

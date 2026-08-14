@@ -9,7 +9,6 @@ namespace AlterunaFPS
 		[Header("Gun")]
 		public Transform GunRoot;
 		public Transform FirePoint;
-		public IKControl IKController;
 		public Animator GunAnimator;
 		public LayerMask BulletCollisionLayers = ~0;
 		public int GunMagazineSize = 5;
@@ -94,7 +93,7 @@ namespace AlterunaFPS
 					
 				}
 
-				IKController.IkActive = true;
+				_ikActive = true;
 				
 				// if the gun is firing or reloading, don't allow any other actions
 				if ((_gunFireCooldown -= Time.deltaTime) > 0 || (_gunReloadCooldown -= Time.deltaTime) > 0)
@@ -125,7 +124,7 @@ namespace AlterunaFPS
 			}
 			else
 			{
-				IKController.IkActive = false;
+				_ikActive = false;
 			}
 		}
 		

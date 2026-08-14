@@ -342,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4996443576612784561, guid: fe6e9076610e5904283d9fe4935a4854, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1094
+      value: 706
       objectReference: {fileID: 0}
     - target: {fileID: 4996443576612784561, guid: fe6e9076610e5904283d9fe4935a4854, type: 3}
       propertyPath: m_SizeDelta.y
@@ -555,9 +555,10 @@ MonoBehaviour:
   InitHost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AlterunaFPS.MenuInstance, Assembly-CSharp
-        m_MethodName: Awake
+      - m_Target: {fileID: 2143400768}
+        m_TargetAssemblyTypeName: Alteruna.Multiplayer.Unity.MultiplayerManager,
+          Alteruna.Multiplayer.Unity
+        m_MethodName: Host
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1151,7 +1152,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2143400765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 731237287, guid: 0ae8d181602a00248a82f64a684a1c88, type: 3}
+  m_Script: {fileID: 11500000, guid: 1caa0a7c0ebcac543968a2fd0d4dbb11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LogLevel: 2
@@ -1274,7 +1275,6 @@ MonoBehaviour:
   IsDevServer: 0
   AutoJoinFirstRoom: 0
   AutoJoinOwnRoom: 0
-  BroadcastEnabled: 0
   DevServerIP: 
   DevPort: 20010
   LANServerPort: 0

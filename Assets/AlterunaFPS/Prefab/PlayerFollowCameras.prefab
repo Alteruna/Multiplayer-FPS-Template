@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 10
-    NearClipPlane: 0.1
+    NearClipPlane: 0.05
     FarClipPlane: 100
     Dutch: 0
     ModeOverride: 0

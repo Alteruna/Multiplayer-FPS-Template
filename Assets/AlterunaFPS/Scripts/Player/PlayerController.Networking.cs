@@ -1,4 +1,4 @@
-﻿using Alteruna.Multiplayer;
+﻿using Alteruna.Multiplayer.Unity;
 using Alteruna.Multiplayer.Core;
 using Alteruna.Multiplayer.Core.MethodArguments;
 using Alteruna.Multiplayer.Core.PacketProcessing.Reader;

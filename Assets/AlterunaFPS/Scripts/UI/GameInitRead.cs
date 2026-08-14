@@ -1,5 +1,5 @@
-﻿using Alteruna.Multiplayer;
-using Alteruna.Multiplayer.EventArgument;
+﻿using Alteruna.Multiplayer.Unity;
+using Alteruna.Multiplayer.Unity.EventArgument;
 using UnityEngine.Events;
 
 namespace AlterunaFPS

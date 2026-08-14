@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using Alteruna.Multiplayer;
-using Alteruna.Multiplayer.InputSynchronizable;
+using Alteruna.Multiplayer.Unity;
+using Alteruna.Multiplayer.Unity.InputSynchronizable;
 
 namespace AlterunaFPS
 {
@@ -58,11 +58,19 @@ namespace AlterunaFPS
 			Move();
 		}
 
-		private void LateUpdate()
+		private void OnAnimatorIK(int layerIndex)
 		{
 			bool lockInput = LockCameraPosition || MenuInstance.Instance.activeSelf;
 			CameraRotation(lockInput);
 			GunAction(lockInput);
+			UpdateIK();
+		}
+
+		private void LateUpdate()
+		{
+			//bool lockInput = LockCameraPosition || MenuInstance.Instance.activeSelf;
+			//CameraRotation(lockInput);
+			//GunAction(lockInput);
 
 			Sync();
 		}
